@@ -23,11 +23,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //handles from content_main buttons/views
         final TextView display_temperature = findViewById(R.id.temperature);
+        final TextView user_num = findViewById(R.id.user_num);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //temperature = 107; //This works, need to set it to the value of user input now instead of a constant
+                temperature = Double.valueOf(user_num.getText().toString()); // This crashes the app if no number is input -- use try/catch block
+                temperature = temperature * 9/5 + 32;
                 //temperature.setText(Double.toString(temperature));
                 display_temperature.setText(Double.toString(temperature));
                 //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
